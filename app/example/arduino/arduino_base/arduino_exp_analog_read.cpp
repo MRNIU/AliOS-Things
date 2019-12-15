@@ -16,11 +16,9 @@ extern "C" {
 
 void arduino_exp_ana_read(void)
 {
-    gpio_dev_t analogPin;
-    analogPin.port = PORT_ADC1;
     int val = 0;
 
-    val = analogRead(&analogPin);
+    val = analogRead(PORT_ADC1);
     printf("val = %d\n", val);
 
     return;

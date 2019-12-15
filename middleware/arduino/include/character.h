@@ -5,6 +5,10 @@
 #ifndef ARDUINO_CHARACTER_H
 #define ARDUINO_CHARACTER_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 #include <ctype.h>
 
 inline bool isAlphaNumeric(int c) __attribute__((always_inline));
@@ -104,5 +108,8 @@ inline int toUpperCase(int c)
   return toupper (c);
 }
 
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* ARDUINO_CHARACTER_H */

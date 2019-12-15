@@ -6,15 +6,12 @@
 
 void arduino_exp_ana_write(void)
 {
-    gpio_dev_t ledPin;
-    gpio_dev_t analogPin;
-    analogPin.port = PORT_ADC1;
     int val = 0;
 
-    pinMode(&ledPin, LED_1, OUTPUT);
+    pinMode(LED_1, OUTPUT);
 
-    val = analogRead(&analogPin);
-    analogWrite(&ledPin, val / 4);
+    val = analogRead(PORT_ADC1);
+    analogWrite(LED_1, val / 4);
 
     return;
 }

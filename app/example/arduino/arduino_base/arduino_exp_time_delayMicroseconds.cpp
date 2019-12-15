@@ -6,12 +6,11 @@
 
 void arduino_exp_time_delayMicroseconds(void)
 {
-    gpio_dev_t outPin;
-    pinMode(&outPin, HAL_GPIO_55,OUTPUT);
-    digitalWrite(&outPin, HIGH);
+    pinMode(HAL_GPIO_55,OUTPUT);
+    digitalWrite(HAL_GPIO_55, HIGH);
 
     delayMicroseconds(50);
-    digitalWrite(&outPin, LOW);
+    digitalWrite(HAL_GPIO_55, LOW);
     delayMicroseconds(50);
     
     return;

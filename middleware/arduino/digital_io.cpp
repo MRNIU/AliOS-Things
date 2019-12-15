@@ -8,6 +8,7 @@ extern "C" {
 
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <aos/hal/gpio.h>
 
 #ifdef __cplusplus
@@ -16,24 +17,10 @@ extern "C" {
 
 #include <include/arduino.h>
 
-// TODO:
-// improve digitIO interface, remove parameters different from arduino such as gpio
+static ListEntry * gpio_list = 0;
 
-static void setPin(gpio_dev_t * gpio, uint8_t pin, uint8_t config, void * val);
 static gpio_config_t type_switch(uint8_t config);
-void pinMode(gpio_dev_t * gpio, uint8_t pin, uint8_t config);
-void digitalWrite(gpio_dev_t * gpio, uint8_t val);
-int digitalRead(gpio_dev_t * gpio);
-
-static void setPin(gpio_dev_t * gpio, uint8_t pin, uint8_t config, void * val)
-{
-    gpio->port = pin;
-    gpio->config = type_switch(config);
-    gpio->priv = val;
-    if(hal_gpio_init(gpio))
-        printf("hal_gpio_init error!\n");
-    return;
-}
+int port_equal(void *vlocation1, void *vlocation2);
 
 static gpio_config_t type_switch(uint8_t config)
 {
@@ -44,54 +31,93 @@ static gpio_config_t type_switch(uint8_t config)
     return INPUT_PULL_UP;
 }
 
+int port_equal(void *vlocation1, void *vlocation2)
+{
+	gpio_dev_t *location1;
+	gpio_dev_t *location2;
+
+	location1 = (gpio_dev_t *) vlocation1;
+	location2 = (gpio_dev_t *) vlocation2;
+
+	return location1->port == location2->port;
+}
+
 /**
  * set pin mode
  *
- * @param[in]  gpio  the gpio pin which should be set
  * @param[in]  pin   the pin number
  * @param[in]  config   INPUT or OUTPUT
  * 
  * @return     void
  */
-void pinMode(gpio_dev_t * gpio, uint8_t pin, uint8_t config)
+void pinMode(uint8_t pin, uint8_t config)
 {
-    setPin(gpio, pin, config, NULL);
+    gpio_dev_t * res = (gpio_dev_t *)list_find_data(gpio_list, port_equal, &pin);
+    // pin not in gpio_list
+    if(res == NULL) {
+        gpio_dev_t * gpio_pin = (gpio_dev_t *)malloc(sizeof(gpio_dev_t));
+        gpio_pin->port = pin;
+        gpio_pin->config = type_switch(config);
+        list_append(&gpio_list, gpio_pin);
+    }
+    // else update pin mode
+    else {
+        res->port = pin;
+        res->config = type_switch(config);
+    }
+
     return;
 }
 
 /**
  * write a digital pin
  *
- * @param[in]  gpio  the gpio pin which should be write
+ * @param[in]  pin  the pin which should be write
  * @param[in]  val   the value which should be write
  * 
  * @return     void
  */
-void digitalWrite(gpio_dev_t * gpio, uint8_t val){
-    if(val == HIGH) {
-        if(hal_gpio_output_high(gpio))
-            printf("hal_gpio_output_high error!\n");
-        return;
+void digitalWrite(uint8_t pin, uint8_t val){
+    gpio_dev_t * res = (gpio_dev_t *)list_find_data(gpio_list, port_equal, &pin);
+    if(res == NULL) {
+        printf("Error: pin not init!\n");
     }
-    else if(val == LOW) {
-        if(hal_gpio_output_low(gpio))
-            printf("hal_gpio_output_low error!\n");
-        return;
+    // else update pin mode
+    else {
+        printf("1\n");
+        if(val == HIGH) {
+            printf("2\n");
+            if(hal_gpio_output_high(res))
+                printf("hal_gpio_output_high error!\n");
+            return;
+        }
+        else if(val == LOW) {
+            printf("3\n");
+            if(hal_gpio_output_low(res))
+                printf("hal_gpio_output_low error!\n");
+            return;
+        }    
     }
-    else
-        return;
+    return;
 }
 
 /**
  * set pin mode
  *
- * @param[in]  gpio  the gpio pin which should be read
+ * @param[in]  pin  the pin which should be read
  * @return     the value from gpio pin
  */
-int digitalRead(gpio_dev_t * gpio)
+int digitalRead(uint8_t pin)
 {
     uint32_t val;
-    if(hal_gpio_input_get(gpio, &val))
-        printf("hal_gpio_input_get error!\n");
-    return val;
+    gpio_dev_t * res = (gpio_dev_t *)list_find_data(gpio_list, port_equal, &pin);
+    if(res == NULL) {
+        printf("Error: pin not init!\n");
+        return -1;
+    }
+    else {
+        if(hal_gpio_input_get(res, &val))
+            printf("hal_gpio_input_get error!\n");
+        return val;    
+    }
 }

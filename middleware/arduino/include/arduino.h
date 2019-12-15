@@ -9,6 +9,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
+#include "linkedlist.h"
 #include <aos/hal/gpio.h>
 
 #define HIGH 0x1
@@ -64,12 +65,12 @@ typedef unsigned int word;
 
 typedef uint8_t byte;
 
-void pinMode(gpio_dev_t * gpio, uint8_t pin, uint8_t config);
-void digitalWrite(gpio_dev_t * gpio, uint8_t val);
-int digitalRead(gpio_dev_t * gpio);
+void pinMode(uint8_t pin, uint8_t config);
+void digitalWrite(uint8_t pin, uint8_t val);
+int digitalRead(uint8_t gpio);
 
-int analogRead(gpio_dev_t * gpio);
-void analogWrite(gpio_dev_t * gpio, int val);
+int analogRead(uint8_t pin);
+void analogWrite(uint8_t pin, int val);
 
 long long millis(void);
 long long micros(void);

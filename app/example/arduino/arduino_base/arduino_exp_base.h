@@ -19,7 +19,7 @@ extern "C"{
 #include <../middleware/arduino/include/character.h>
 
 #define LED_1 22
-#define LED_2 67
+#define LED_2 63
 #define HAL_GPIO_55 55
 #define PORT_ADC1 1
 

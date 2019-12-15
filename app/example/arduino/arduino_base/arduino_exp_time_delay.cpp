@@ -6,12 +6,11 @@
 
 void arduino_exp_time_delay(void)
 {
-    gpio_dev_t ledPin;
-    pinMode(&ledPin, LED_1,OUTPUT);
+    pinMode(LED_1,OUTPUT);
 
-    digitalWrite(&ledPin, HIGH);
+    digitalWrite(LED_1, HIGH);
     delay(1000);
-    digitalWrite(&ledPin, LOW);
+    digitalWrite(LED_1, LOW);
     delay(1000);
 
     return;

@@ -3,7 +3,8 @@ $(NAME)_MBINS_TYPE := kernel
 $(NAME)_VERSION := 0.0.1
 $(NAME)_SUMMARY := Arduino framework
 $(NAME)_VENDER := MRNIU
-$(NAME)_SOURCES := digital_io.cpp \
+$(NAME)_SOURCES := linkedlist.c \
+					digital_io.cpp \
 					analog_io.cpp \
 					time.cpp \
 					math.cpp \

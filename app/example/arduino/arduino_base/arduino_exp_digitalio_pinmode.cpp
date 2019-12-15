@@ -6,13 +6,12 @@
 
 void arduino_exp_dig_pinmode(void)
 {
-    gpio_dev_t pin;
-    pinMode(&pin, LED_2, OUTPUT);
+    pinMode(LED_2, OUTPUT);
 
     while(1) {
-        digitalWrite(&pin, HIGH);
+        digitalWrite(LED_2, HIGH);
         delay(1000);
-        digitalWrite(&pin, LOW);
+        digitalWrite(LED_2, LOW);
         delay(1000);
     }
     
