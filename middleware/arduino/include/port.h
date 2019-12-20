@@ -9,6 +9,7 @@
 extern "C" {
 #endif /* __cplusplus */
 
+// Developer Kit start
 #define ARD_0    3  // PA3
 #define ARD_1    2  // PA2
 #define ARD_2    62  // PD14
@@ -44,5 +45,10 @@ extern "C" {
 #define ARD_RESET  // Reset MCU
 #define ARD_IOREF  // 3V output
 #define ARD_NULL // void
+// Developer Kit end
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */ 
 
 #endif /* ARDUINO_PORT_H */

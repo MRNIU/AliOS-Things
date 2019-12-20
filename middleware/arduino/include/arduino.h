@@ -10,6 +10,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include "linkedlist.h"
+#include "port.h"
 #include <aos/hal/gpio.h>
 
 #define HIGH 0x1
