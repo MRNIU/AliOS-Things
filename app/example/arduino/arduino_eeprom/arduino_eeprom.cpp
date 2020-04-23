@@ -14,10 +14,11 @@ extern "C" {
 
 #include <arduino_exp_eeprom.h>
 
-extern "C" int application_start(int argc, char *argv[]);
+void setup() {
+  return;
+}
 
-int application_start(int argc, char *argv[])
-{
+void loop() {
     printf("Test Begin !\n");
 
     arduino_exp_eeprom_clear();
@@ -31,6 +32,5 @@ int application_start(int argc, char *argv[])
     arduino_exp_eeprom_iterations();
     
     printf("Test End !\n");
-    return 0;
+    return;
 }
-

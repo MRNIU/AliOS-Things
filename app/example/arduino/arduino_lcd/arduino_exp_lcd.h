@@ -9,6 +9,4 @@
 #include <../middleware/arduino/include/arduino.h>
 #include <../middleware/arduino/include/liquidcrystal.h>
 
-void test(void);
-
 #endif /* ARDUINO_EXP_SOFTWARESERIAL_H */

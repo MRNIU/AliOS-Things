@@ -6,15 +6,13 @@
 
 void arduino_exp_eeprom_clear(void)
 {
-    gpio_dev_t led1;
-
-    pinMode(&led1, LED_1, OUTPUT);
+    pinMode(LED_1, OUTPUT);
     
     for (uint32_t i=0; i<64; i++){
         EEPROM.write(i, 0);
-        digitalWrite(&led1, LOW);
+        digitalWrite(LED_1, LOW);
         delay(100);
-        digitalWrite(&led1, HIGH);
+        digitalWrite(LED_1, HIGH);
     }
     
     return;

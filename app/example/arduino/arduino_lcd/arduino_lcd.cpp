@@ -16,10 +16,11 @@ extern "C" {
 
 #include <arduino_exp_lcd.h>
 
-extern "C" int application_start(int argc, char *argv[]);
+void setup() {
+  return;
+}
 
-int application_start(int argc, char *argv[])
-{
+void loop() {
     printf("Test Begin !\n");
 
     // test();
@@ -33,14 +34,6 @@ int application_start(int argc, char *argv[])
     // lcd.clear();
 
     lcd.write(1, 2, 0xF1);
-
-    return 0;
-}
-
-void test(void)
-{
-
-
 
     return;
 }

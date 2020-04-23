@@ -23,10 +23,11 @@ void printDirectory_rewindDirectory(File dir);
 void arduino_exp_sd_openNextFile(void);
 void printDirectory_openNextFile(File dir, int numTabs);
 
-extern "C" int application_start(int argc, char *argv[]);
+void setup() {
+  return;
+}
 
-int application_start(int argc, char *argv[])
-{
+void loop() {
     printf("Test Begin !\n");
 
     if(aos_vfs_init())
@@ -47,7 +48,7 @@ int application_start(int argc, char *argv[])
 
     printf("Test End !\n");
     
-    return 0;
+    return;
 }
 
 void arduino_exp_sd_isDirectory()

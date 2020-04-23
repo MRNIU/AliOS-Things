@@ -15,10 +15,11 @@ extern "C" {
 
 #include <arduino_exp_wire.h>
 
-extern "C" int application_start(int argc, char *argv[]);
+void setup() {
+  return;
+}
 
-int application_start(int argc, char *argv[])
-{
+void loop() {
     printf("Test Begin !\n");
 
 
@@ -27,7 +28,7 @@ int application_start(int argc, char *argv[])
     // arduino_exp_wire_write();
     arduino_exp_wire_read();
 
-    return 0;
+    return;
 }
 
 void arduino_exp_wire_write(void)

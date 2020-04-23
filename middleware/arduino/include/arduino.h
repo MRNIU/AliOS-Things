@@ -13,6 +13,10 @@ extern "C" {
 #include "port.h"
 #include <aos/hal/gpio.h>
 
+extern "C" int application_start(int argc, char *argv[]);
+extern "C" void setup(void);
+extern "C" void loop(void);
+
 #define HIGH 0x1
 #define LOW  0x0
 

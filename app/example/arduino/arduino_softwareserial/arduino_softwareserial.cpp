@@ -14,10 +14,11 @@ extern "C" {
 
 #include <arduino_exp_softwareserial.h>
 
-extern "C" int application_start(int argc, char *argv[]);
+void setup() {
+  return;
+}
 
-int application_start(int argc, char *argv[])
-{
+void loop() {
     printf("Test Begin !\n");
     
     test();
@@ -34,7 +35,7 @@ int application_start(int argc, char *argv[])
     // arduino_exp_ss_write();
     // arduino_exp_ss_listen();
 
-    return 0;
+    return;
 }
 
 void test(void)

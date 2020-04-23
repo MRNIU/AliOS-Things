@@ -12,7 +12,8 @@ $(NAME)_SOURCES := linkedlist.c \
 					sd.cpp \
 					lcd.cpp \
 					softwareserial.cpp \
-					wire.cpp
+					wire.cpp \
+					interface.cpp
 
 GLOBAL_DEFINES += AOS_NO_WIFI \
 					AOS_COMP_VFS \
