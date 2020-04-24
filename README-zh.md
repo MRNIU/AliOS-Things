@@ -10,6 +10,12 @@
 </div>
 <br/>
 
+
+
+**此库已不再维护，请参阅 https://github.com/MRNIU/ArduinoFramework-AliOSThings 以获取最新代码**
+
+
+
 [EN](./README.md) | 中文
 
 AliOS Things发布于[2017年杭州云栖大会](https://yunqi.aliyun.com)， 是 AliOS 家族旗下的、面向IoT领域的、高可伸缩的物联网操作系统，于2017年10月20号宣布在[github](https://github.com/alibaba/AliOS-Things)上开源. 

@@ -4,11 +4,16 @@
 </div>
 <br/>
 <div align="center">
-
 [![Join the chat at https://gitter.im/aliosthings/Lobby](https://img.shields.io/gitter/room/aliosthings/Lobby.svg?style=flat-square)](https://gitter.im/aliosthings/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 </div>
 <br/>
+
+
+
+**This repo has been archived, please see https://github.com/MRNIU/ArduinoFramework-AliOSThings for the lastest code**
+
+
 
 EN | [中文](./README-zh.md)
 
